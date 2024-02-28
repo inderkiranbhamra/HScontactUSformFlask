@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -22,7 +22,7 @@ def submit_form():
     send_personalized_text(email)
 
     # Return JSON response
-    return jsonify({'Your message has been sent.': 'We\'ll get back to you soon!'})
+    return redirect("https://hackoverflow-society-website.vercel.app/contact", code=302)
 
 
 def send_email(name, email, message):
