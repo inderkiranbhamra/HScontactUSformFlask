@@ -22,7 +22,7 @@ def submit_form():
     send_personalized_text(email)
 
     # Return JSON response
-    return jsonify({'message': 'Your message has been sent. We\'ll get back to you soon!'})
+    return jsonify({'Your message has been sent.': 'We\'ll get back to you soon!'})
 
 
 def send_email(name, email, message):
