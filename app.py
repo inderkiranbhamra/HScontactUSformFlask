@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -21,8 +21,9 @@ def submit_form():
     # Send automated personalized text
     send_personalized_text(email)
 
-    # Return HTML file
-    return send_file('response.html')
+    # Return JSON response
+    return jsonify({'message': 'Your message has been sent. We\'ll get back to you soon!'})
+
 
 def send_email(name, email, message):
     # Set up SMTP server
@@ -46,6 +47,7 @@ def send_email(name, email, message):
         server.login(sender_email, app_password)
         server.send_message(msg)
 
+
 def send_personalized_text(email):
     # Set up SMTP server
     smtp_server = 'smtp.gmail.com'  # Gmail SMTP server
@@ -67,5 +69,4 @@ def send_personalized_text(email):
         server.starttls()
         server.login(sender_email, app_password)
         server.send_message(msg)
-
 
