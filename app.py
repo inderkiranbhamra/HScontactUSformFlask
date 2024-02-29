@@ -52,8 +52,8 @@ def send_personalized_text(email):
     # Set up SMTP server
     smtp_server = 'smtp.gmail.com'  # Gmail SMTP server
     smtp_port = 587  # SMTP port for Gmail
-    sender_email = 'inderkiran20233@gmail.com'  # Your email
-    app_password = 'krhu cexv lyue dmnz'  # Your generated app password
+    sender_email = 'hackoverflow@cumail.in'  # Your email
+    app_password = 'lgde lflp hmgu krrd'  # Your generated app password
 
     # Create message
     msg = MIMEMultipart()
