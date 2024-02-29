@@ -22,7 +22,7 @@ def submit_form():
     send_personalized_text(email)
 
     # Return JSON response
-    return redirect("https://hackoverflowsociety.in/contact", code=302)
+    return redirect("https://hackoverflowsociety.in/", code=302)
 
 
 def send_email(name, email, message):
