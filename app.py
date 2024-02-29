@@ -28,7 +28,7 @@ def submit_form():
 def send_email(name, email, message):
     # Set up SMTP server
     smtp_server = 'smtp.gmail.com'  # Gmail SMTP server
-    smtp_port = 587  # SMTP port for Gmail
+    smtp_port = 465  # SMTP port for Gmail
     sender_email = 'hackoverflow@cumail.in'  # Your email
     app_password = 'lgde lflp hmgu krrd'  # Your generated app password
 
@@ -51,7 +51,7 @@ def send_email(name, email, message):
 def send_personalized_text(email):
     # Set up SMTP server
     smtp_server = 'smtp.gmail.com'  # Gmail SMTP server
-    smtp_port = 587  # SMTP port for Gmail
+    smtp_port = 465  # SMTP port for Gmail
     sender_email = 'hackoverflow@cumail.in'  # Your email
     app_password = 'lgde lflp hmgu krrd'  # Your generated app password
 
