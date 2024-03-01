@@ -25,6 +25,7 @@ def submit_form():
     return redirect("https://hackoverflowsociety.in/", code=302)
 
 
+
 def send_email(name, email, message):
     # Set up SMTP server
     smtp_server = 'smtp.gmail.com'  # Gmail SMTP server
@@ -54,6 +55,7 @@ def send_personalized_text(email):
     smtp_port = 587  # SMTP port for Gmail
     sender_email = 'hackoverflow@cumail.in'  # Your email
     app_password = 'lgde lflp hmgu krrd'  # Your generated app password
+    name = request.form.get('name')
 
     # Create message
     msg = MIMEMultipart()
@@ -61,7 +63,7 @@ def send_personalized_text(email):
     msg['To'] = email
     msg['Subject'] = 'Message Confirmation'
 
-    body = "Your message has been sent. We'll get back to you soon!"
+    body = f"Hello {name}\n Your message has been sent. We'll get back to you soon!"
     msg.attach(MIMEText(body, 'plain'))
 
     # Send email
