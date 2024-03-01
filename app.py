@@ -63,7 +63,7 @@ def send_personalized_text(email):
     msg['To'] = email
     msg['Subject'] = 'Message Confirmation'
 
-    body = f"Hello {name}\n Your message has been sent. We'll get back to you soon!"
+    body = f"Hello {name}\nYour message has been sent. We'll get back to you soon!"
     msg.attach(MIMEText(body, 'plain'))
 
     # Send email
