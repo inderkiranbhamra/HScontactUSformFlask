@@ -5,7 +5,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 app = Flask(__name__)
-CORS(app, origins=["https://hackoverflowsociety.in","https://hackoverflowsociety.in"])
+CORS(app)
+
+allowed_origin = "https://hackoverflowsociety.in"
 
 
 @app.route('/submit_form', methods=['POST'])
