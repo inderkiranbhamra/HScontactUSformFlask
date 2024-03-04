@@ -9,9 +9,17 @@ CORS(app)
 
 allowed_origin = "https://hackoverflowsociety.in"
 
+def validate_origin():
+    if request.headers.get("Origin") != allowed_origin:
+        return jsonify({"error": "Invalid origin"}), 403
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
+    # Validate origin
+    error_response = validate_origin()
+    if error_response:
+        return error_response
+
     # Get form data
     name = request.form.get('name')
     email = request.form.get('email')
@@ -21,11 +29,10 @@ def submit_form():
     send_email(name, email, message)
 
     # Send automated personalized text
-    send_personalized_text(email)
+    send_personalized_text(name, email)
 
     # Return JSON response
     return redirect("https://hackoverflowsociety.in/", code=302)
-
 
 
 def send_email(name, email, message):
@@ -51,13 +58,12 @@ def send_email(name, email, message):
         server.send_message(msg)
 
 
-def send_personalized_text(email):
+def send_personalized_text(name, email):
     # Set up SMTP server
     smtp_server = 'smtp.gmail.com'  # Gmail SMTP server
     smtp_port = 587  # SMTP port for Gmail
     sender_email = 'hackoverflow@cumail.in'  # Your email
     app_password = 'lgde lflp hmgu krrd'  # Your generated app password
-    name = request.form.get('name')
 
     # Create message
     msg = MIMEMultipart()
@@ -74,3 +80,5 @@ def send_personalized_text(email):
         server.login(sender_email, app_password)
         server.send_message(msg)
 
+if __name__ == "__main__":
+    app.run()
