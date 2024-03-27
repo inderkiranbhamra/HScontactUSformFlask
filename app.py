@@ -3,6 +3,7 @@ from flask_cors import CORS
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from flask import jsonify
 
 app = Flask(__name__)
 CORS(app)
@@ -31,8 +32,12 @@ def submit_form():
     # Send automated personalized text
     send_personalized_text(name, email)
 
-    # Return JSON response
-    return redirect("https://hackoverflowsociety.in/", code=302)
+    # Return JSON response with JavaScript for the pop-up dialogue box
+    response_data = {
+        'message': 'Your message has been sent!',
+        'script': 'alert("Your message has been sent!");'
+    }
+    return jsonify(response_data), 200
 
 
 def send_email(name, email, message):
